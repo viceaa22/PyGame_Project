@@ -15,19 +15,24 @@ class AlienInvasion:
         pygame.init()
         self.settings = Settings()
 
-        self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-        self.settings.screen_width = self.screen.get_rect().width
-        self.settings.screen_height = self.screen.get_rect().height
 
-        #self.screen = pygame.display.set_mode(
-            #(self.settings.screen_width, self.settings.screen_height))
+        #self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+        #self.settings.screen_width = self.screen.get_rect().width
+        #self.settings.screen_height = self.screen.get_rect().height
+        #Full screen works but is too wide and high so switched to window mode
+        
+        self.screen = pygame.display.set_mode(
+            (self.settings.screen_width, self.settings.screen_height))
 
-        #self.screen = pygame.display.set_mode((1200, 800))
+        self.screen = pygame.display.set_mode((1200, 800))
         
         pygame.display.set_caption("Alien Invasion")
         
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
+        self.aliens = pygame.sprite.Group()
+        
+        self._create_fleet()
 
         # Set the background color.
         self.bg_color = (230, 230, 230)
@@ -39,6 +44,12 @@ class AlienInvasion:
             self.ship.update()
             self._update_bullets()
             self._update_screen()
+    
+    def _create_fleet(self):
+        #Create the fleet of aliens.
+        #Make an alien.
+        alien = Alien(self)
+        self.aliens.add(alien)
 
     def _update_bullets(self):
         #Update position of bullets and get rid of old bullets.
@@ -100,6 +111,7 @@ class AlienInvasion:
             self.ship.blitme()
             for bullet in self.bullets.sprites():
                 bullet.draw_bullet()
+            self.aliens.draw(self.screen)
 
 #Make the most recently drawn screen visible.
 
