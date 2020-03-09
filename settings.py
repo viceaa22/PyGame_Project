@@ -13,6 +13,12 @@ class Settings:
      # Ship settings
      self.ship_speed = 1.5
 
+     # Alien settings
+     self.alien_speed = 1.0
+     self.fleet_drop_speed = 10
+     #fleet_direction of 1 represents right; -1 represents left.
+     self.fleet_direction = 1
+
      #Screen settings
      self.screen_width = 1200
      self.screen_height = 800
