@@ -116,7 +116,7 @@ class AlienInvasion:
         #print(len(self.bullets))
 
     def _check_bullet_alien_collisions(self):
-        #Respond to bullet-alien collisions."""
+        #Respond to bullet-alien collisions.
         #Remove any bullets and aliens that have collided.
 
         #Check for any bullets that have hit aliens.
@@ -139,7 +139,7 @@ class AlienInvasion:
         #Look for alien-ship collisions.
         if pygame.sprite.spritecollideany(self.ship, self.aliens):
             self._ship_hit()
-            print("Ship hit!!!")
+            #print("Ship hit!!!")
 
         #Look for aliens hitting the bottom of the screen.
         self._check_aliens_bottom()
@@ -184,7 +184,6 @@ class AlienInvasion:
                     self._check_keydown_events(event)
                 elif event.type == pygame.KEYUP:
                     self._check_keyup_events(event)
-
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     mouse_pos = pygame.mouse.get_pos()
                     self._check_play_button(mouse_pos)
@@ -194,9 +193,9 @@ class AlienInvasion:
         #Start a new game when the player clicks Play.
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.stats.game_active:
-            #Reset the game settings.
-            self.settings.initialize_dynamic_settings()
             #Reset the game statistics.
+            self.settings.initialize_dynamic_settings()
+            
             self.stats.reset_stats()
             self.stats.game_active = True
 
