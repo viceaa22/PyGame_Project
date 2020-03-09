@@ -202,6 +202,8 @@ class AlienInvasion:
             #Create a new fleet and center the ship.
             self._create_fleet()
             self.ship.center_ship()
+            #Hide the mouse cursor.
+            pygame.mouse.set_visible(False)
 
 
     def _check_keydown_events(self, event):
