@@ -98,7 +98,14 @@ class AlienInvasion:
         for bullet in self.bullets.copy():
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
-        print(len(self.bullets))
+            
+        self._check_bullet_alien_collisions()
+
+        #print(len(self.bullets))
+
+    def _check_bullet_alien_collisions(self):
+        #Respond to bullet-alien collisions."""
+        #Remove any bullets and aliens that have collided.
 
         #Check for any bullets that have hit aliens.
         #If so, get rid of the bullet and the alien.
